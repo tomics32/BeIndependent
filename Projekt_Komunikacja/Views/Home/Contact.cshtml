@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Kontakt";
+}
+<h2>@ViewBag.Title</h2>
+
+<address>
+    <strong> Tomasz Kalicki </strong> -  <a href="mailto:tomics32@gmail.com">tomics32@gmail.com</a><br />
+   <strong> Telefon: </strong> 665508983
+</address>
+
+<h3>Skontaktuj się z nami: </h3>
+<form action="mailto:tomics32@gmail.com" method="post" enctype="text/plain">
+    Imię:<br>
+    <input class="form-control" type="text" name="name"><br>
+    E-mail:<br>
+    <input class="form-control"  type="text" name="mail"><br>
+    Wiadomość:<br>
+    <textarea class="form-control" name="comment" size="30" rows="6" cols="40"> </textarea><br>
+    <input type="submit" value="Wyślij" class="btn btn-default">
+    
+    
+</form>
+<br />

@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Projekt_Komunikacja.Models.MultipleTablesModel>
+@{ ViewBag.Title = "Ośrodki";
+    
+        }
+
+ 
+<h2>Ośrodki</h2>
+<p>
+    @Html.ActionLink("Nowy", "Create")
+</p>
+
+<center>
+    <table class="table">
+        <tr>
+            <td>@Html.ActionLink("Nazwa", "Index", new { sortOrder = ViewBag.NameSortParm })</td>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            
+            string nav = "https://www.google.com/maps/" + "@" + item.AdresList.Lat + "," + item.AdresList.Long + "," + "20z";
+            <tr>
+                <td rowspan="4" valign="middle" align="center" width="350"><img src="/Content/Images/@item.PlacesList.Photo" height="200" width="300" alt="Sample Photo" /> </td>
+                <td height="70"><h2> @item.PlacesList.Nazwa </h2> </td>
+                @if (item.PlacesList.JestPrzystosowane == true)
+                {
+                    <td width="40" align="center"><span style="color: lightblue;"> <i class="fas fa-wheelchair fa-4x"></i> </span> </td>
+                }
+                else
+                {
+                    <td width="40" align="center"> <span style="color: indianred;"> <i class="fas fa-times fa-4x"></i> </span> </td>
+                }
+            </tr>
+            <tr>
+                <td valign="top"><h4> @item.AdresList.Ulica </h4></td>
+
+
+            </tr>
+            <tr>
+                <td> <h4> Telefon: @item.KontaktList.NrTelefonu </h4></td>
+            </tr>
+            <tr>
+                <td><h4> Email: @item.KontaktList.Email </h4></td>
+                <td width="40" align="center"><a href="@nav"> <span style="color: #A3C128;"> <i class="fas fa-map-marked-alt fa-4x"></i> </span> </a> </td>
+            </tr>
+
+            <td>
+                @Html.ActionLink("Edytuj", "Edit", new { id = item.PlacesList.PlaceID }) |
+                @Html.ActionLink("Szczegóły", "Details", new { id = item.PlacesList.PlaceID }) |
+                @Html.ActionLink("Usuń", "Delete", new { id = item.PlacesList.PlaceID })
+            </td>
+
+        }
+    </table>
+</center>
